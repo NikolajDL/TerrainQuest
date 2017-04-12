@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TerrainQuest.Generator.Helpers
 {
@@ -20,6 +16,7 @@ namespace TerrainQuest.Generator.Helpers
         ///     Passes (row, column, index) as arguments.
         /// </param>
         public static void ForEach<TData>(this Map<TData> map, Action<int, int, int> action)
+            where TData : struct
         {
             for (int r = 0; r < map.Height; r++)
                 for (int c = 0; c < map.Width; c++)
@@ -37,6 +34,7 @@ namespace TerrainQuest.Generator.Helpers
         ///     Passes (row, column, index) as arguments.
         /// </param>
         public static void ForEach<TData>(this Map<TData> map, Action<int, int> action)
+            where TData : struct
             => ForEach(map, (r, c, i) => action(r, c));
     }
 }
