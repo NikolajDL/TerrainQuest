@@ -7,6 +7,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainQuest.Graphics", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainQuest.Editor", "TerrainQuest.Editor\TerrainQuest.Editor.csproj", "{8B40E835-DA6F-4480-B70D-F74F6B282FB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainQuest.Generator", "TerrainQuest.Generator\TerrainQuest.Generator.csproj", "{4DD2624B-BE80-4C73-9276-3AFB979211FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainQuest.ConsoleApplication", "TerrainQuest.ConsoleApplication\TerrainQuest.ConsoleApplication.csproj", "{8DD5A81C-6BB8-4257-A86B-D4975EBAF099}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8ED62FA0-F60D-4828-8FE9-0779C7F5A53D}"
+	ProjectSection(SolutionItems) = preProject
+		Shared\Check.cs = Shared\Check.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +30,14 @@ Global
 		{8B40E835-DA6F-4480-B70D-F74F6B282FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B40E835-DA6F-4480-B70D-F74F6B282FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B40E835-DA6F-4480-B70D-F74F6B282FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD2624B-BE80-4C73-9276-3AFB979211FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD2624B-BE80-4C73-9276-3AFB979211FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD2624B-BE80-4C73-9276-3AFB979211FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD2624B-BE80-4C73-9276-3AFB979211FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DD5A81C-6BB8-4257-A86B-D4975EBAF099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DD5A81C-6BB8-4257-A86B-D4975EBAF099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DD5A81C-6BB8-4257-A86B-D4975EBAF099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DD5A81C-6BB8-4257-A86B-D4975EBAF099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
