@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator.Graph.Blending
@@ -16,7 +14,7 @@ namespace TerrainQuest.Generator.Graph.Blending
     /// </summary>
     public class MixNode : HeightMapNode
     {
-        private Nullable<Size> _size;
+        private Size? _size;
 
         private List<WeightedNode> _dependencies = new List<WeightedNode>();
 
@@ -104,7 +102,7 @@ namespace TerrainQuest.Generator.Graph.Blending
         /// </summary>
         public MixNode(SerializationInfo info, StreamingContext context)
         {
-            _size = (Nullable<Size>)info.GetValue("Size", typeof(Nullable<Size>));
+            _size = (Size?)info.GetValue("Size", typeof(Size?));
             _dependencies = (List<WeightedNode>)info.GetValue(nameof(Dependencies), typeof(List<WeightedNode>));
         }
 
@@ -113,7 +111,7 @@ namespace TerrainQuest.Generator.Graph.Blending
         /// </summary>
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Size", _size, typeof(Size));
+            info.AddValue("Size", _size, typeof(Size?));
             info.AddValue(nameof(Dependencies), _dependencies, _dependencies.GetType());
         }
 
