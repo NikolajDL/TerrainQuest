@@ -45,6 +45,8 @@
       <Link>Utils\Check.cs</Link>
     </Compile>
     <Compile Include="Generators\IGenerator.cs" />
+    <Compile Include="Graph\Blending\MaskNode.cs" />
+    <Compile Include="Graph\Blending\MixNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
     <Compile Include="Graph\HeightMapNode.cs" />
     <Compile Include="Graph\INode.cs" />
