@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using TerrainQuest.Generator.Helpers;
@@ -15,9 +16,9 @@ namespace TerrainQuest.Generator.Graph.Blending
     /// </summary>
     public class MixNode : HeightMapNode
     {
-        private readonly Size? _size;
+        private Nullable<Size> _size;
 
-        private readonly List<WeightedNode> _dependencies = new List<WeightedNode>();
+        private List<WeightedNode> _dependencies = new List<WeightedNode>();
 
         /// <summary>
         /// Get all nodes getting mixed in.
@@ -53,7 +54,7 @@ namespace TerrainQuest.Generator.Graph.Blending
         {
             lock (_dependencies)
             {
-                _dependencies.Add(new WeightedNode { Node = dependency, Weight = mixWeight });
+                _dependencies.Add(new WeightedNode(dependency, mixWeight));
             }
         }
 
@@ -96,10 +97,61 @@ namespace TerrainQuest.Generator.Graph.Blending
             return baseMap;
         }
 
-        private class WeightedNode
+        #region Serialization
+
+        /// <summary>
+        /// Object deserialization constructor
+        /// </summary>
+        public MixNode(SerializationInfo info, StreamingContext context)
         {
-            public HeightMapNode Node { get; set; }
-            public float Weight { get; set; }
+            _size = (Nullable<Size>)info.GetValue("Size", typeof(Nullable<Size>));
+            _dependencies = (List<WeightedNode>)info.GetValue(nameof(Dependencies), typeof(List<WeightedNode>));
+        }
+
+        /// <summary>
+        /// Object serialization method
+        /// </summary>
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Size", _size, typeof(Size));
+            info.AddValue(nameof(Dependencies), _dependencies, _dependencies.GetType());
+        }
+
+        #endregion
+        
+        private class WeightedNode : ISerializable
+        {
+            public HeightMapNode Node { get; private set; }
+
+            public float Weight { get; private set; }
+
+            public WeightedNode(HeightMapNode node, float weight)
+            {
+                Node = node;
+                Weight = weight;
+            }
+
+            #region Serialization
+
+            /// <summary>
+            /// Object deserialization constructor
+            /// </summary>
+            public WeightedNode(SerializationInfo info, StreamingContext context)
+            {
+                Node = info.GetTypedValue<HeightMapNode>(nameof(Node));
+                Weight = info.GetSingle(nameof(Weight));
+            }
+
+            /// <summary>
+            /// Object serialization method
+            /// </summary>
+            public void GetObjectData(SerializationInfo info, StreamingContext context)
+            {
+                info.AddTypedValue(nameof(Node), Node);
+                info.AddValue(nameof(Weight), Weight);
+            }
+
+            #endregion
         }
     }
 }

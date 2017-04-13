@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator.Graph.Blending
@@ -54,5 +55,27 @@ namespace TerrainQuest.Generator.Graph.Blending
 
             Result = baseMap;
         }
+
+        #region Serialization
+
+        /// <summary>
+        /// Object deserialization constructor
+        /// </summary>
+        public MaskNode(SerializationInfo info, StreamingContext context)
+        {
+            Source = (HeightMapNode)info.GetValue(nameof(Source), typeof(HeightMapNode));
+            Mask = (HeightMapNode)info.GetValue(nameof(Mask), typeof(HeightMapNode));
+        }
+
+        /// <summary>
+        /// Object serialization method
+        /// </summary>
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue(nameof(Source), Source, Source.GetType());
+            info.AddValue(nameof(Mask), Mask, Mask.GetType());
+        }
+
+        #endregion
     }
 }

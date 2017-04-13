@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace TerrainQuest.Generator.Graph
 {
@@ -6,7 +7,7 @@ namespace TerrainQuest.Generator.Graph
     /// <summary>
     /// Represents a node in the terrain generator graph structure
     /// </summary>
-    public interface INode
+    public interface INode : ISerializable
     {
         /// <summary>
         /// Get a list of this nodes dependencies

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace TerrainQuest.Generator.Graph
@@ -57,5 +58,7 @@ namespace TerrainQuest.Generator.Graph
             IsExecuting = false;
             IsDone = true;
         }
+
+        public abstract void GetObjectData(SerializationInfo info, StreamingContext context);
     }
 }

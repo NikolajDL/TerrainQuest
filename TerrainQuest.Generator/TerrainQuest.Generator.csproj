@@ -55,6 +55,7 @@
     <Compile Include="HeightMap.cs" />
     <Compile Include="Helpers\MapExtensions.cs" />
     <Compile Include="Helpers\MathHelper.cs" />
+    <Compile Include="Helpers\SerializationInfoExtensions.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

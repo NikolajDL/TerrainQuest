@@ -53,8 +53,6 @@ namespace TerrainQuest.Generator.Generators
         /// <summary>
         /// Object deserialization constructor
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
         public FlatGenerator(SerializationInfo info, StreamingContext context)
         {
             _dimensionHeight = info.GetInt32(nameof(DimensionHeight));

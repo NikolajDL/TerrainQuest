@@ -1,4 +1,7 @@
-﻿using TerrainQuest.Generator.Generators;
+﻿using System;
+using System.Runtime.Serialization;
+using TerrainQuest.Generator.Generators;
+using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator.Graph
 {
@@ -7,16 +10,18 @@ namespace TerrainQuest.Generator.Graph
     /// </summary>
     public class GeneratorNode : HeightMapNode
     {
+        private IGenerator _generator;
+
         /// <summary>
         /// Get the generator used for processing this node
         /// </summary>
-        public IGenerator Generator { get; }
+        public IGenerator Generator { get { return _generator; } }
 
         public GeneratorNode(IGenerator generator)
         {
             Check.NotNull(generator, nameof(generator));
 
-            Generator = generator;
+            _generator = generator;
         }
 
         /// <summary>
@@ -26,5 +31,25 @@ namespace TerrainQuest.Generator.Graph
         {
             Result = Generator.Generate();
         }
+
+        #region Serialization
+
+        /// <summary>
+        /// Object deserialization constructor
+        /// </summary>
+        public GeneratorNode(SerializationInfo info, StreamingContext context)
+        {
+            _generator = info.GetTypedValue<IGenerator>(nameof(Generator));
+        }
+
+        /// <summary>
+        /// Object serialization method
+        /// </summary>
+        public override void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddTypedValue(nameof(Generator), _generator);
+        }
+
+        #endregion
     }
 }
