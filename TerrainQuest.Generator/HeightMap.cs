@@ -34,6 +34,12 @@ namespace TerrainQuest.Generator
             : base(height, width) { }
 
         /// <summary>
+        /// Create a heightmap of the given dimensions
+        /// </summary>
+        public HeightMap(Size size)
+            : base(size.Height, size.Width) { }
+
+        /// <summary>
         /// Create a copy of the passed heightmap
         /// </summary>
         public HeightMap(double[,] map)

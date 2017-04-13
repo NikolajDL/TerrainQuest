@@ -5,14 +5,12 @@ namespace TerrainQuest.Generator.Generators
     /// <summary>
     /// A generator that generates a flat heightmap of a given height.
     /// </summary>
-    public class FlatGenerator : BaseGenerator, IGenerator
+    public class FlatGenerator : BaseGenerator
     {
-        private double _height;
-
         /// <summary>
         /// Get the height of the generated <see cref="HeightMap"/>
         /// </summary>
-        public double Height { get { return _height; } }
+        public double Height { get; private set; }
 
         /// <summary>
         /// Create a generator, that generates a flat <see cref="HeightMap"/> of a given constant height
@@ -20,7 +18,7 @@ namespace TerrainQuest.Generator.Generators
         public FlatGenerator(int height, int width, double heightValue = 0d)
             : base(height, width)
         {
-            _height = heightValue;
+            Height = heightValue;
         }
 
         /// <summary>
@@ -28,7 +26,7 @@ namespace TerrainQuest.Generator.Generators
         /// </summary>
         public override HeightMap Generate()
         {
-            var map = new HeightMap(Dimensions.Height, Dimensions.Width);
+            var map = new HeightMap(Dimensions);
             map.FlattenTo(Height);
             return map;
         }
@@ -41,7 +39,7 @@ namespace TerrainQuest.Generator.Generators
         public FlatGenerator(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
-            _height = info.GetDouble(nameof(Height));
+            Height = info.GetDouble(nameof(Height));
         }
 
         /// <summary>

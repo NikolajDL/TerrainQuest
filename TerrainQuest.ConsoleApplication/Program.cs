@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using TerrainQuest.Generator.Generators;
+using TerrainQuest.Generator.Generators.Shape;
 using TerrainQuest.Generator.Graph;
 using TerrainQuest.Generator.Graph.Blending;
 using TerrainQuest.Generator.Serialization;
@@ -19,7 +20,7 @@ namespace TerrainQuest.ConsoleApplication
         private static void SerializeFlatGenerator()
         {
             var flatGenerator1 = new FlatGenerator(300, 300, 1d);
-            var flatGenerator2 = new FlatGenerator(300, 300, 0.5d);
+            var flatGenerator2 = new SquareGenerator(300, 300, 0.5f);
             var filename = GetFilename("serial.json");
 
             var node1 = new GeneratorNode(flatGenerator1);

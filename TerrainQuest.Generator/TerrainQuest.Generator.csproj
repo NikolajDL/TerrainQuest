@@ -51,6 +51,7 @@
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
+    <Compile Include="Generators\Shape\SquareGenerator.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
     <Compile Include="Graph\Blending\MixNode.cs" />
     <Compile Include="Graph\Effect\InvertNode.cs" />
@@ -70,9 +71,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Generators\Shape\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
