@@ -5,6 +5,11 @@ using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator.Generators.Shape
 {
+    /// <summary>
+    /// A generator that generates a square shape in the <see cref="HeightMap"/> 
+    /// of a given height, with any size and offset by a configurable distance. 
+    /// The square can also be created as a center square with some radius ratio.
+    /// </summary>
     public class SquareGenerator : BaseGenerator
     {
         /// <summary>
@@ -80,8 +85,6 @@ namespace TerrainQuest.Generator.Generators.Shape
 
             return map;
         }
-
-
 
         #region Serialization
 

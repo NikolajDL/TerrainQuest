@@ -19,19 +19,19 @@ namespace TerrainQuest.ConsoleApplication
 
         private static void SerializeFlatGenerator()
         {
-            var flatGenerator1 = new FlatGenerator(300, 300, 1d);
-            var flatGenerator2 = new SquareGenerator(300, 300, 0.5f);
+            var flatGenerator1 = new FlatGenerator(300, 300, 0.5d);
+            var flatGenerator2 = new PyramidGenerator(300, 300, 0.5f, 0d);
             var filename = GetFilename("serial.json");
 
             var node1 = new GeneratorNode(flatGenerator1);
             var node2 = new GeneratorNode(flatGenerator2);
-            var mixNode = new MixNode();
-            mixNode.AddDependency(node1, 0.5f);
-            mixNode.AddDependency(node2, 0.5f);
+            var addNode = new AddNode();
+            addNode.AddDependency(node1, 0.5f);
+            addNode.AddDependency(node2, 0.5f);
             
-            GraphSerializer.Serialize(filename, new GraphRoot(mixNode), true);
+            GraphSerializer.Serialize(filename, new GraphRoot(addNode), true);
 
-            Process.Start(filename);
+            //Process.Start(filename);
             
             var root = GraphSerializer.Deserialize(filename);
             var node = root.Node as HeightMapNode;

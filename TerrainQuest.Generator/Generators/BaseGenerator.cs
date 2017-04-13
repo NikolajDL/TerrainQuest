@@ -17,7 +17,7 @@ namespace TerrainQuest.Generator.Generators
         /// </summary>
         public Size Dimensions { get { return _dimensions; } }
 
-        protected BaseGenerator(int height, int width)
+        public BaseGenerator(int height, int width)
             : this(new Size(width, height)) { }
 
         public BaseGenerator(Size dimensions)

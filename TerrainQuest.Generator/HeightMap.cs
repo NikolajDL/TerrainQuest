@@ -12,12 +12,12 @@ namespace TerrainQuest.Generator
         /// <summary>
         /// Get the largest height value in the heightmap
         /// </summary>
-        public double MaxHeight { get; private set; } = double.MaxValue;
+        public double MaxHeight { get; private set; } = double.MinValue;
 
         /// <summary>
         /// Get the lowest height value in the heightmap
         /// </summary>
-        public double MinHeight { get; private set; } = double.MinValue;
+        public double MinHeight { get; private set; } = double.MaxValue;
 
         #region Constructors
 
@@ -61,7 +61,7 @@ namespace TerrainQuest.Generator
         #endregion
 
         #region Indexer and setter/getter
-
+        
         /// <summary>
         /// Get the value for a given coordinate pair and update the min/max value.
         /// </summary>
