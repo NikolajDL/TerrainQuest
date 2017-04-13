@@ -63,8 +63,8 @@ namespace TerrainQuest.Generator.Graph.Blending
         /// </summary>
         public MaskNode(SerializationInfo info, StreamingContext context)
         {
-            Source = (HeightMapNode)info.GetValue(nameof(Source), typeof(HeightMapNode));
-            Mask = (HeightMapNode)info.GetValue(nameof(Mask), typeof(HeightMapNode));
+            Source = info.GetTypedValue<HeightMapNode>(nameof(Source));
+            Mask = info.GetTypedValue<HeightMapNode>(nameof(Mask));
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace TerrainQuest.Generator.Graph.Blending
         /// </summary>
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue(nameof(Source), Source, Source.GetType());
-            info.AddValue(nameof(Mask), Mask, Mask.GetType());
+            info.AddTypedValue(nameof(Source), Source);
+            info.AddTypedValue(nameof(Mask), Mask);
         }
 
         #endregion

@@ -45,7 +45,7 @@ namespace TerrainQuest.Generator.Graph
         /// </summary>
         public void Execute()
         {
-            if (IsDone)
+            if (IsDone || IsExecuting)
                 return;
 
             IsExecuting = true;

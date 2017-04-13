@@ -48,10 +48,12 @@
     <Compile Include="..\Shared\Check.cs">
       <Link>Utils\Check.cs</Link>
     </Compile>
+    <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
     <Compile Include="Graph\Blending\MixNode.cs" />
+    <Compile Include="Graph\Effect\InvertNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
     <Compile Include="Graph\HeightMapNode.cs" />
     <Compile Include="Graph\INode.cs" />
@@ -67,6 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generators\Shape\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
