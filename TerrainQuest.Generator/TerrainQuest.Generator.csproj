@@ -51,9 +51,10 @@
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
+    <Compile Include="Generators\Shape\PyramidGenerator.cs" />
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
-    <Compile Include="Graph\Blending\MixNode.cs" />
+    <Compile Include="Graph\Blending\AddNode.cs" />
     <Compile Include="Graph\Effect\InvertNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
     <Compile Include="Graph\HeightMapNode.cs" />
