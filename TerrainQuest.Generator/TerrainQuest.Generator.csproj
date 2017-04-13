@@ -44,6 +44,7 @@
     <Compile Include="..\Shared\Check.cs">
       <Link>Utils\Check.cs</Link>
     </Compile>
+    <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
     <Compile Include="Graph\Blending\MixNode.cs" />
