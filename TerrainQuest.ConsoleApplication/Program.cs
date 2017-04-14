@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using TerrainQuest.Generator.Generators;
-using TerrainQuest.Generator.Generators.Shape;
+using TerrainQuest.Generator.Generators.Noise;
 using TerrainQuest.Generator.Graph;
 using TerrainQuest.Generator.Graph.Blending;
-using TerrainQuest.Generator.Serialization;
+using TerrainQuest.Generator.Graph.Effect;
 
 namespace TerrainQuest.ConsoleApplication
 {
@@ -19,26 +20,19 @@ namespace TerrainQuest.ConsoleApplication
 
         private static void SerializeFlatGenerator()
         {
-            var flatGenerator1 = new FlatGenerator(300, 300, 0.5d);
-            var flatGenerator2 = new PyramidGenerator(300, 300, 0.5f, 0d);
+            var flatGenerator1 = new SimplexNoiseGenerator(300, 300, new SizeF(1, 1));
             var filename = GetFilename("serial.json");
 
             var node1 = new GeneratorNode(flatGenerator1);
-            var node2 = new GeneratorNode(flatGenerator2);
+
             var addNode = new AddNode();
-            addNode.AddDependency(node1, 0.5f);
-            addNode.AddDependency(node2, 0.5f);
-            
-            GraphSerializer.Serialize(filename, new GraphRoot(addNode), true);
+            addNode.AddDependency(node1, 1f);
 
-            //Process.Start(filename);
-            
-            var root = GraphSerializer.Deserialize(filename);
-            var node = root.Node as HeightMapNode;
+            var rootNode = new NormalizeNode(addNode);
 
-            node.Execute();
+            rootNode.Execute();
 
-            var bitmap = node.Result.AsBitmap();
+            var bitmap = rootNode.Result.AsBitmap();
             var filename2 = GetFilename("generated.png");
             bitmap.Save(filename2, ImageFormat.Png);
 

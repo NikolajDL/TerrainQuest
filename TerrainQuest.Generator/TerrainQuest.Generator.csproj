@@ -48,14 +48,20 @@
     <Compile Include="..\Shared\Check.cs">
       <Link>Utils\Check.cs</Link>
     </Compile>
+    <Compile Include="Algorithms\DiamondSquareNoise.cs" />
+    <Compile Include="Algorithms\OpenSimplexNoise.cs" />
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
+    <Compile Include="Generators\Noise\DSNoiseGenerator.cs" />
+    <Compile Include="Generators\Noise\SimplexNoiseGenerator.cs" />
+    <Compile Include="Generators\Noise\WhiteNoiseGenerator.cs" />
     <Compile Include="Generators\Shape\PyramidGenerator.cs" />
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
     <Compile Include="Graph\Blending\AddNode.cs" />
     <Compile Include="Graph\Effect\InvertNode.cs" />
+    <Compile Include="Graph\Effect\NormalizeNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
     <Compile Include="Graph\HeightMapNode.cs" />
     <Compile Include="Graph\INode.cs" />

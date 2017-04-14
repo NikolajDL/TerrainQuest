@@ -72,8 +72,15 @@ namespace TerrainQuest.Generator
             UpdateMinMaxValue(value);
         }
 
-        private void RecalculateMinMaxValue()
+        /// <summary>
+        /// Recalculate the MinHeight and MaxHeight of the current map. 
+        /// This is required if you manually change the map data using the 
+        /// Data property.
+        /// </summary>
+        public void RecalculateMinMaxValue()
         {
+            MaxHeight = double.MinValue;
+            MinHeight = double.MaxValue;
             this.ForEach((r, c) => UpdateMinMaxValue(_data[r, c]));
         }
 
@@ -81,7 +88,7 @@ namespace TerrainQuest.Generator
         {
             if (value > MaxHeight)
                 MaxHeight = value;
-            else if (value < MinHeight)
+            if (value < MinHeight)
                 MinHeight = value;
         }
 
@@ -108,15 +115,26 @@ namespace TerrainQuest.Generator
         }
 
         /// <summary>
-        /// Normalize the entire heightmap to stay within the interval [0,1]
+        /// Normalize the entire heightmap to within the interval [0, 1] 
+        /// calculated from the MinHeight and MaxHeight of this heightmap
         /// </summary>
         public void Normalize()
         {
-            var normalizationRatio = (MaxHeight - MinHeight);
+            Normalize(MinHeight, MaxHeight);
+        }
+
+        /// <summary>
+        /// Normalize the entire heightmap to within the interval [0, 1] 
+        /// calculated from the given min and max value.
+        /// </summary>
+        public void Normalize(double min, double max)
+        {
+            var normalizationRatio = (max - min);
             this.ForEach((r, c) =>
             {
-                Data[r, c] = (Data[r, c] - MinHeight) / normalizationRatio;
+                Data[r, c] = (Data[r, c] - min) / normalizationRatio;
             });
+            RecalculateMinMaxValue();
         }
 
         /// <summary>
@@ -126,6 +144,16 @@ namespace TerrainQuest.Generator
         {
             var clone = Clone();
             clone.Normalize();
+            return clone;
+        }
+
+        /// <summary>
+        /// Return a normalized copy of this heightmap
+        /// </summary>
+        public HeightMap AsNormalized(double min, double max)
+        {
+            var clone = Clone();
+            clone.Normalize(min, max);
             return clone;
         }
 

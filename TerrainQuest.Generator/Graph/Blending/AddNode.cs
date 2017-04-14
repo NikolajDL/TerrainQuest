@@ -89,7 +89,7 @@ namespace TerrainQuest.Generator.Graph.Blending
             baseMap.ForEach((r, c) =>
             {
                 if (mixMap.CheckPositionIsValid(r, c))
-                    baseMap[r, c] = MathHelper.Clamp(baseMap[r, c] + mixMap[r, c] * weight, 0, 1);
+                    baseMap[r, c] = baseMap[r, c] + mixMap[r, c] * weight;
             });
 
             return baseMap;

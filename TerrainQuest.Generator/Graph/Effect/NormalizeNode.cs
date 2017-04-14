@@ -5,13 +5,13 @@ using TerrainQuest.Generator.Helpers;
 namespace TerrainQuest.Generator.Graph.Effect
 {
     /// <summary>
-    /// A node that takes the source <see cref="HeightMap"/>, 
-    /// inverts it and passes the inverted map as a result.
+    /// A node that takes a source node <see cref="HeightMap"/> 
+    /// and returns it with it's values normalized.
     /// </summary>
-    public class InvertNode : HeightMapNode
+    public class NormalizeNode : HeightMapNode
     {
         /// <summary>
-        /// Get the source node being inverted
+        /// Get the source node being normalized
         /// </summary>
         public HeightMapNode Source { get; private set; }
 
@@ -27,26 +27,19 @@ namespace TerrainQuest.Generator.Graph.Effect
         }
 
         /// <summary>
-        /// Create a <see cref="HeightMap"/> inverter node.
+        /// Create a <see cref="HeightMap"/> normalizer node.
         /// </summary>
-        /// <param name="source"><see cref="HeightMap"/> to invert.</param>
-        public InvertNode(HeightMapNode source)
+        /// <param name="source"><see cref="HeightMap"/> to normalize.</param>
+        public NormalizeNode(HeightMapNode source)
         {
             Check.NotNull(source, nameof(source));
 
             Source = source;
         }
-
+        
         protected override void Process()
         {
-            var inverted = Source.Result.Clone();
-
-            inverted.ForEach((r, c) =>
-            {
-                inverted[r, c] = 1 - inverted[r, c];
-            });
-
-            Result = inverted;
+            Result = Source.Result.AsNormalized();
         }
 
         #region Serialization
@@ -54,7 +47,7 @@ namespace TerrainQuest.Generator.Graph.Effect
         /// <summary>
         /// Object deserialization constructor
         /// </summary>
-        public InvertNode(SerializationInfo info, StreamingContext context)
+        public NormalizeNode(SerializationInfo info, StreamingContext context)
         {
             Source = info.GetTypedValue<HeightMapNode>(nameof(Source));
         }
