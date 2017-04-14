@@ -20,7 +20,7 @@ namespace TerrainQuest.ConsoleApplication
 
         private static void SerializeFlatGenerator()
         {
-            var flatGenerator1 = new SimplexNoiseGenerator(300, 300, new SizeF(1, 1));
+            var flatGenerator1 = new FBMSimplexNoiseGenerator(300, 300, 16, 0.5f, 0.007f);
             var filename = GetFilename("serial.json");
 
             var node1 = new GeneratorNode(flatGenerator1);
