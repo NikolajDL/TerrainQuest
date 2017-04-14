@@ -55,6 +55,7 @@
     <Compile Include="Effects\ContrastEffect.cs" />
     <Compile Include="Effects\GammaEffect.cs" />
     <Compile Include="Effects\IEffect.cs" />
+    <Compile Include="Effects\IntensityEffect.cs" />
     <Compile Include="Effects\InvertEffect.cs" />
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />

@@ -27,7 +27,7 @@ namespace TerrainQuest.ConsoleApplication
 
             var node1 = new GeneratorNode(flatGenerator1);
 
-            var inverted = new ImageEffectNode(node1, new GammaEffect(0.5d));
+            var inverted = new ImageEffectNode(node1, new IntensityEffect(0.5d));
 
 
             inverted.Execute();
