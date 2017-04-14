@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using TerrainQuest.Generator.Effects;
 using TerrainQuest.Generator.Generators;
 using TerrainQuest.Generator.Generators.Noise;
 using TerrainQuest.Generator.Generators.Shape;
@@ -21,18 +22,16 @@ namespace TerrainQuest.ConsoleApplication
 
         private static void SerializeFlatGenerator()
         {
-            var flatGenerator1 = new VoronoiNoiseGenerator(200, 200);
+            var flatGenerator1 = new VoronoiNoiseGenerator(200, 200, seed: 10);
             var filename = GetFilename("serial.json");
 
             var node1 = new GeneratorNode(flatGenerator1);
 
-            var addNode = new AddNode();
-            addNode.AddDependency(node1, 1f);
+            var inverted = new ImageEffectNode(node1, new GammaEffect(0.5d));
 
-            var normalize = new NormalizeNode(node1);
 
-            node1.Execute();
-            var bitmap = node1.Result.AsBitmap();
+            inverted.Execute();
+            var bitmap = inverted.Result.AsBitmap();
             var filename2 = GetFilename("generated.png");
             bitmap.Save(filename2, ImageFormat.Png);
 

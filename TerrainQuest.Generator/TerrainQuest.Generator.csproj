@@ -51,6 +51,11 @@
     <Compile Include="Algorithms\DiamondSquareNoise.cs" />
     <Compile Include="Algorithms\OpenSimplexNoise.cs" />
     <Compile Include="Algorithms\VoronoiNoise.cs" />
+    <Compile Include="Effects\BrightnessEffect.cs" />
+    <Compile Include="Effects\ContrastEffect.cs" />
+    <Compile Include="Effects\GammaEffect.cs" />
+    <Compile Include="Effects\IEffect.cs" />
+    <Compile Include="Effects\InvertEffect.cs" />
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
@@ -63,7 +68,7 @@
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
     <Compile Include="Graph\Blending\AddNode.cs" />
-    <Compile Include="Graph\Effect\InvertNode.cs" />
+    <Compile Include="Graph\Effect\ImageEffectNode.cs" />
     <Compile Include="Graph\Effect\NormalizeNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
     <Compile Include="Graph\HeightMapNode.cs" />
