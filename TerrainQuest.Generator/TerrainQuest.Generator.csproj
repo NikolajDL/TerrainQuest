@@ -50,12 +50,14 @@
     </Compile>
     <Compile Include="Algorithms\DiamondSquareNoise.cs" />
     <Compile Include="Algorithms\OpenSimplexNoise.cs" />
+    <Compile Include="Algorithms\VoronoiNoise.cs" />
     <Compile Include="Generators\BaseGenerator.cs" />
     <Compile Include="Generators\FlatGenerator.cs" />
     <Compile Include="Generators\IGenerator.cs" />
     <Compile Include="Generators\Noise\DSNoiseGenerator.cs" />
     <Compile Include="Generators\Noise\FBMSimplexNoiseGenerator.cs" />
     <Compile Include="Generators\Noise\SimplexNoiseGenerator.cs" />
+    <Compile Include="Generators\Noise\VoronoiNoiseGenerator.cs" />
     <Compile Include="Generators\Noise\WhiteNoiseGenerator.cs" />
     <Compile Include="Generators\Shape\PyramidGenerator.cs" />
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
