@@ -51,6 +51,16 @@ namespace TerrainQuest.Generator
         }
 
         /// <summary>
+        /// Create a heightmap with the given dimensions 
+        /// and copy the source data into it
+        /// </summary>
+        public HeightMap(int height, int width, double[,] source)
+            : base(height, width, source)
+        {
+            RecalculateMinMaxValue();
+        }
+
+        /// <summary>
         /// Clone this heightmap
         /// </summary>
         public HeightMap Clone()

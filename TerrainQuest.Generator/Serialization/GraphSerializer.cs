@@ -6,20 +6,20 @@ namespace TerrainQuest.Generator.Serialization
 {
     /// <summary>
     /// A static class used to serialize and deserialize a terrain generation graph structure
-    /// represented by a <see cref="GraphRoot"/> object.
+    /// represented by a <see cref="SerializedNode"/> object.
     /// </summary>
     public static class GraphSerializer
     {
 
         /// <summary>
-        /// Serialize a terrain generation <see cref="GraphRoot"/> as a JSON encoded file to the given stream.
+        /// Serialize a terrain generation <see cref="SerializedNode"/> as a JSON encoded file to the given stream.
         /// </summary>
         /// <param name="writer">Stream to write the serialized data to</param>
         /// <param name="graph">Graph to serialize</param>
         /// <param name="prettyJson">
         /// Should format the JSON with identation and newline characters for better readability
         /// </param>
-        public static void Serialize(StreamWriter writer, GraphRoot graph, bool prettyJson = false)
+        public static void Serialize(StreamWriter writer, SerializedNode graph, bool prettyJson = false)
         {
             var serializer = new JsonSerializer();
             if(prettyJson)
@@ -29,7 +29,7 @@ namespace TerrainQuest.Generator.Serialization
         }
 
         /// <summary>
-        /// Serialize a terrain generation <see cref="GraphRoot"/> as a JSON encoded file
+        /// Serialize a terrain generation <see cref="SerializedNode"/> as a JSON encoded file
         /// and saves it as the given filename. 
         /// If the given file already exists, it'll be overridden, otherwise a new file is created.
         /// </summary>
@@ -38,7 +38,7 @@ namespace TerrainQuest.Generator.Serialization
         /// <param name="prettyJson">
         /// Should format the JSON with identation and newline characters for better readability
         /// </param>
-        public static void Serialize(string filename, GraphRoot graph, bool prettyJson = false)
+        public static void Serialize(string filename, SerializedNode graph, bool prettyJson = false)
         {
             using (var writer = new StreamWriter(filename, false))
             {
@@ -48,19 +48,19 @@ namespace TerrainQuest.Generator.Serialization
 
 
         /// <summary>
-        /// Serialize a terrain generation <see cref="GraphRoot"/> 
+        /// Serialize a terrain generation <see cref="SerializedNode"/> 
         /// using an <see cref="IFormatter"/> to the given stream.
         /// </summary>
         /// <param name="writer">Stream to write the serialized data to</param>
         /// <param name="graph">Graph to serialize</param>
         /// <param name="formatter">Formatter used to serialize the graph.</param>
-        public static void Serialize(StreamWriter writer, GraphRoot graph, IFormatter formatter)
+        public static void Serialize(StreamWriter writer, SerializedNode graph, IFormatter formatter)
         {
             formatter.Serialize(writer.BaseStream, graph);
         }
 
         /// <summary>
-        /// Serialize a terrain generation <see cref="GraphRoot"/> 
+        /// Serialize a terrain generation <see cref="SerializedNode"/> 
         /// using an <see cref="IFormatter"/>
         /// and saves it as the given filename. 
         /// If the given file already exists, it'll be overridden, otherwise a new file is created.
@@ -68,7 +68,7 @@ namespace TerrainQuest.Generator.Serialization
         /// <param name="filename">Path and filename of the file to serialize to.</param>
         /// <param name="graph">Graph to serialize</param>
         /// <param name="formatter">Formatter used to serialize the graph.</param>
-        public static void Serialize(string filename, GraphRoot graph, IFormatter formatter)
+        public static void Serialize(string filename, SerializedNode graph, IFormatter formatter)
         {
             using (var writer = new StreamWriter(filename, false))
             {
@@ -77,22 +77,22 @@ namespace TerrainQuest.Generator.Serialization
         }
 
         /// <summary>
-        /// Deserializes a JSON encoded file to a terrain generation <see cref="GraphRoot"/>
+        /// Deserializes a JSON encoded file to a terrain generation <see cref="SerializedNode"/>
         /// </summary>
         /// <param name="reader">Stream containing the JSON file to serialize</param>
-        /// <returns>A terrain generation graph structure represented by a <see cref="GraphRoot"/></returns>
-        public static GraphRoot Deserialize(StreamReader reader)
+        /// <returns>A terrain generation graph structure represented by a <see cref="SerializedNode"/></returns>
+        public static SerializedNode Deserialize(StreamReader reader)
         {
             var serializer = new JsonSerializer();
-            return (GraphRoot)serializer.Deserialize(reader, typeof(GraphRoot));
+            return (SerializedNode)serializer.Deserialize(reader, typeof(SerializedNode));
         }
 
         /// <summary>
-        /// Deserializes a JSON encoded file to a terrain generation <see cref="GraphRoot"/>
+        /// Deserializes a JSON encoded file to a terrain generation <see cref="SerializedNode"/>
         /// </summary>
         /// <param name="filename">Path and name of the JSON file to deserialize</param>
-        /// <returns>A terrain generation graph structure represented by a <see cref="GraphRoot"/></returns>
-        public static GraphRoot Deserialize(string filename)
+        /// <returns>A terrain generation graph structure represented by a <see cref="SerializedNode"/></returns>
+        public static SerializedNode Deserialize(string filename)
         {
             using (var reader = new StreamReader(filename, false))
             {
@@ -102,25 +102,25 @@ namespace TerrainQuest.Generator.Serialization
 
 
         /// <summary>
-        /// Deserializes a terrain generation <see cref="GraphRoot"/>
+        /// Deserializes a terrain generation <see cref="SerializedNode"/>
         /// using a <see cref="IFormatter"/>.
         /// </summary>
         /// <param name="reader">Stream containing the JSON file to serialize</param>
         /// <param name="formatter">Formatter used to deserialize the graph.</param>
-        /// <returns>A terrain generation graph structure represented by a <see cref="GraphRoot"/></returns>
-        public static GraphRoot Deserialize(StreamReader reader, IFormatter formatter)
+        /// <returns>A terrain generation graph structure represented by a <see cref="SerializedNode"/></returns>
+        public static SerializedNode Deserialize(StreamReader reader, IFormatter formatter)
         {
-            return (GraphRoot)formatter.Deserialize(reader.BaseStream);
+            return (SerializedNode)formatter.Deserialize(reader.BaseStream);
         }
 
         /// <summary>
-        /// Deserializes a terrain generation <see cref="GraphRoot"/>
+        /// Deserializes a terrain generation <see cref="SerializedNode"/>
         /// using a <see cref="IFormatter"/>.
         /// </summary>
         /// <param name="filename">Path and name of the file to deserialize</param>
         /// <param name="formatter">Formatter used to deserialize the graph.</param>
-        /// <returns>A terrain generation graph structure represented by a <see cref="GraphRoot"/></returns>
-        public static GraphRoot Deserialize(string filename, IFormatter formatter)
+        /// <returns>A terrain generation graph structure represented by a <see cref="SerializedNode"/></returns>
+        public static SerializedNode Deserialize(string filename, IFormatter formatter)
         {
             using (var reader = new StreamReader(filename, false))
             {

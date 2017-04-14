@@ -1,4 +1,5 @@
 ﻿using System;
+using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator
 {
@@ -13,12 +14,12 @@ namespace TerrainQuest.Generator
         /// <summary>
         /// Get the height of the map
         /// </summary>
-        public int Height { get; }
+        public int Height { get; private set; }
 
         /// <summary>
         /// Get the width of the map
         /// </summary>
-        public int Width { get; }
+        public int Width { get; private set; }
 
         /// <summary>
         /// Get the data that makes up this map.
@@ -46,6 +47,17 @@ namespace TerrainQuest.Generator
             Width = width;
 
             _data = new TData[Height, Width];
+        }
+
+        /// <summary>
+        /// Create a map of the given dimensions
+        /// </summary>
+        public Map(int height, int width, TData[,] source)
+        {
+            Height = height;
+            Width = width;
+
+            _data = MathHelper.Copy(source, height, width);
         }
 
         #endregion
@@ -104,5 +116,6 @@ namespace TerrainQuest.Generator
         }
 
         #endregion
+        
     }
 }

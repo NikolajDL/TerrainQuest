@@ -39,7 +39,7 @@ namespace TerrainQuest.Generator.Generators.Noise
         public long? Seed { get; private set; }
 
         public FBMSimplexNoiseGenerator(int height, int width, 
-            int iterations, float persistence, float scale, long? seed = null) 
+            int iterations = 16, float persistence = 0.5f, float scale = 0.01f, long? seed = null) 
             : base(height, width)
         {
             Iterations = iterations;
@@ -57,7 +57,7 @@ namespace TerrainQuest.Generator.Generators.Noise
             map.ForEach((r, c) => {
                 map[r, c] = SumOctave(c, r);
             });
-
+            
             return map;
         }
 

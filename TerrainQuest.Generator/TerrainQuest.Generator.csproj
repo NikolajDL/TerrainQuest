@@ -51,6 +51,16 @@
     <Compile Include="Algorithms\DiamondSquareNoise.cs" />
     <Compile Include="Algorithms\OpenSimplexNoise.cs" />
     <Compile Include="Algorithms\VoronoiNoise.cs" />
+    <Compile Include="Blending\AddBlend.cs" />
+    <Compile Include="Blending\BlendModes.cs" />
+    <Compile Include="Blending\DarkenBlend.cs" />
+    <Compile Include="Blending\DifferenceBlend.cs" />
+    <Compile Include="Blending\IBlendMode.cs" />
+    <Compile Include="Blending\LightenBlend.cs" />
+    <Compile Include="Blending\MultiplyBlend.cs" />
+    <Compile Include="Blending\OverlayBlend.cs" />
+    <Compile Include="Blending\ScreenBlend.cs" />
+    <Compile Include="Blending\SubtractBlend.cs" />
     <Compile Include="Effects\BrightnessEffect.cs" />
     <Compile Include="Effects\ContrastEffect.cs" />
     <Compile Include="Effects\GammaEffect.cs" />
@@ -67,8 +77,8 @@
     <Compile Include="Generators\Noise\WhiteNoiseGenerator.cs" />
     <Compile Include="Generators\Shape\PyramidGenerator.cs" />
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
+    <Compile Include="Graph\Blending\BlendingNode.cs" />
     <Compile Include="Graph\Blending\MaskNode.cs" />
-    <Compile Include="Graph\Blending\AddNode.cs" />
     <Compile Include="Graph\Effect\ImageEffectNode.cs" />
     <Compile Include="Graph\Effect\NormalizeNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
@@ -81,7 +91,7 @@
     <Compile Include="Helpers\SerializationInfoExtensions.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\GraphRoot.cs" />
+    <Compile Include="Serialization\SerializedNode.cs" />
     <Compile Include="Serialization\GraphSerializer.cs" />
   </ItemGroup>
   <ItemGroup>

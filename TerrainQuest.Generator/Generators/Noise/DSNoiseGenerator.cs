@@ -44,7 +44,6 @@ namespace TerrainQuest.Generator.Generators.Noise
             var resizedResult = MathHelper.Copy(result, Dimensions.Height, Dimensions.Width);
 
             var map = new HeightMap(resizedResult);
-            map.Normalize();
             return map;
         }
 
