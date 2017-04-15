@@ -57,6 +57,7 @@
     <Compile Include="Blending\DifferenceBlend.cs" />
     <Compile Include="Blending\IBlendMode.cs" />
     <Compile Include="Blending\LightenBlend.cs" />
+    <Compile Include="Blending\MaskBlend.cs" />
     <Compile Include="Blending\MultiplyBlend.cs" />
     <Compile Include="Blending\OverlayBlend.cs" />
     <Compile Include="Blending\ScreenBlend.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Generators\Shape\PyramidGenerator.cs" />
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
     <Compile Include="Graph\Blending\BlendingNode.cs" />
-    <Compile Include="Graph\Blending\MaskNode.cs" />
     <Compile Include="Graph\Effect\ImageEffectNode.cs" />
     <Compile Include="Graph\Effect\NormalizeNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />

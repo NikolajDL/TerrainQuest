@@ -23,10 +23,10 @@ namespace TerrainQuest.ConsoleApplication
 
         private static void SerializeFlatGenerator()
         {
-            //var generator1 = new SquareGenerator(200, 200, new Size(150, 150), 0.5f);
-            //var generator2 = new SquareGenerator(200, 200, new Size(150, 150), new Point(50,50), 0.5f);
-            var generator1 = new FlatGenerator(200, 200, 1);
-            var generator2 = new DSNoiseGenerator(200, 200, seed: 10);
+            var generator1 = new SquareGenerator(100, 100, new Size(75, 75), 0.5f);
+            var generator2 = new SquareGenerator(100, 100, new Size(75, 75), new Point(25,25), 0.5f);
+            //var generator1 = new FlatGenerator(200, 200, 1);
+            //var generator2 = new DSNoiseGenerator(200, 200, seed: 10);
             var filename = GetFilename("serial.json");
 
             var node1 = new GeneratorNode(generator1);

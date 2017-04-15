@@ -44,5 +44,10 @@
         /// Difference blend mode
         /// </summary>
         public static readonly DifferenceBlend Difference = new DifferenceBlend();
+
+        /// <summary>
+        /// Mask blend mode
+        /// </summary>
+        public static readonly MaskBlend Mask = new MaskBlend();
     }
 }

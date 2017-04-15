@@ -4,7 +4,8 @@ namespace TerrainQuest.Generator.Blending
 {
     /// <summary>
     /// A multiply darkening <see cref="IBlendMode"/> where the <see cref="HeightMap"/>s are multiplied together,
-    /// which usually leaves the result darkened. 
+    /// which usually leaves the result darkened. Any pixels in the source (left) map that isn't in the multiply (right) map
+    /// is included (i.e. multiplied by 1). 
     /// </summary>
     public class MultiplyBlend : IBlendMode
     {
