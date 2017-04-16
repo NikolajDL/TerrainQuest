@@ -61,7 +61,7 @@ namespace TerrainQuest.Generator.Helpers
 
             for (int i = 0; i < minHeight; ++i)
             {
-                Array.Copy(original, i * height, newArray, i * minWidth, minWidth);
+                Array.Copy(original, i * width, newArray, i * newWidth, minWidth);
             }
             return newArray;
         }
