@@ -207,7 +207,6 @@ namespace TerrainQuest.Tests.Generator
         public void Data_ReturnsRawMapData()
         {
             // Arrange
-            var expectedValue = 99;
             var source = new int[,] { { 1, 2 }, { 4, 5 } };
             var map = new Map<int>(source);
 

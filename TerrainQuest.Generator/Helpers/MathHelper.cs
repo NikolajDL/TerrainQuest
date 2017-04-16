@@ -24,9 +24,16 @@ namespace TerrainQuest.Generator.Helpers
         /// Check whether a value is a power of two (value == x^2)
         /// </summary>
         /// <param name="value"></param>
-        /// <returns></returns>
         public static bool IsPowerOfTwo(int value)
+            => IsPowerOfTwo((long)value);
+
+        /// <summary>
+        /// Check whether a value is a power of two (value == x^2)
+        /// </summary>
+        /// <param name="value"></param>
+        public static bool IsPowerOfTwo(long value)
         {
+            value = Math.Abs(value);
             return (value & (value - 1)) == 0;
         }
 
