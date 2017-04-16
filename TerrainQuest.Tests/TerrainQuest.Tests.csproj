@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generator\HeightMapTests.cs" />
     <Compile Include="Generator\Helpers\MathHelperTests.cs" />
     <Compile Include="Generator\MapTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

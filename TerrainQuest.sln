@@ -13,6 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TerrainQuest.ConsoleApplica
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8ED62FA0-F60D-4828-8FE9-0779C7F5A53D}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		Shared\Check.cs = Shared\Check.cs
 	EndProjectSection
 EndProject
