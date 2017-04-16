@@ -17,7 +17,7 @@ namespace TerrainQuest.Generator.Blending
             var result = left.Clone();
 
             result.ForEach((r, c) => {
-                result[r, c] *= right.CheckPositionIsValid(r, c) ? right[r, c] : 1d;
+                result[r, c] *= right.IsInRange(r, c) ? right[r, c] : 1d;
             });
 
             return result;

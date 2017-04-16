@@ -17,7 +17,7 @@ namespace TerrainQuest.Generator.Blending
 
             result.ForEach((r, c) => {
                 var a = result[r, c];
-                var b = right.CheckPositionIsValid(r, c) ? right[r, c] : 0d;
+                var b = right.IsInRange(r, c) ? right[r, c] : 0d;
 
                 if (a < 0.5)
                     result[r, c] = 2 * a * b;

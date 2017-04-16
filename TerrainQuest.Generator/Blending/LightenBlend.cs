@@ -17,7 +17,7 @@ namespace TerrainQuest.Generator.Blending
 
             result.ForEach((r, c) => {
                 var a = result[r, c];
-                var b = right.CheckPositionIsValid(r, c) ? right[r, c] : 0d;
+                var b = right.IsInRange(r, c) ? right[r, c] : 0d;
                 result[r, c] = Math.Max(a, b);
             });
 

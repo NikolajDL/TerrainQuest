@@ -60,6 +60,17 @@ namespace TerrainQuest.Generator
             _data = MathHelper.Copy(source, height, width);
         }
 
+        /// <summary>
+        /// Create a map using the given source
+        /// </summary>
+        public Map(TData[,] source)
+        {
+            Height = source.GetLength(0);
+            Width = source.GetLength(1);
+
+            _data = source;
+        }
+
         #endregion
 
         #region Indexer and setter/getter
@@ -80,7 +91,7 @@ namespace TerrainQuest.Generator
         /// <exception cref="ArgumentOutOfRangeException">Thrown if coordinate is out of bounds</exception>
         public TData GetValue(int row, int col)
         {
-            if (!CheckPositionIsValid(row, col))
+            if (!IsInRange(row, col))
                 throw new ArgumentOutOfRangeException();
 
             return _data[row, col];
@@ -92,16 +103,16 @@ namespace TerrainQuest.Generator
         /// <exception cref="ArgumentOutOfRangeException">Thrown if coordinate is out of bounds</exception>
         public virtual void SetValue(int row, int col, TData value)
         {
-            if (!CheckPositionIsValid(row, col))
+            if (!IsInRange(row, col))
                 throw new ArgumentOutOfRangeException();
 
             _data[row, col] = value;
         }
 
         /// <summary>
-        /// Check whether the given coordinates is valid for this map
+        /// Check whether the given coordinates is within range for this map
         /// </summary>
-        public bool CheckPositionIsValid(int row, int col)
+        public bool IsInRange(int row, int col)
         {
             if (row < 0)
                 return false;

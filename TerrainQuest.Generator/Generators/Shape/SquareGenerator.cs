@@ -79,7 +79,7 @@ namespace TerrainQuest.Generator.Generators.Shape
             for(int y = Offset.Y; y < yMax; y++)
                 for(int x = Offset.X; x < xMax; x++)
                 {
-                    if (map.CheckPositionIsValid(y, x))
+                    if (map.IsInRange(y, x))
                         map[y, x] = MathHelper.Clamp(Height, 0d, 1d);
                 }
 
