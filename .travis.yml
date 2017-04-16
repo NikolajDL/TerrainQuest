@@ -1,2 +1,8 @@
 language: csharp
 solution: TerrainQuest.sln
+install:
+  - nuget restore TerrainQuest.sln
+  - nuget install xunit.runner.console -Version 2.2.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release TerrainQuest.sln
+  - mono ./testrunner/xunit.runner.console.2.2.0/xunit.console.exe ./TerrainQuest.Tests/bin/Release/TerrainQuest.Tests.dll
