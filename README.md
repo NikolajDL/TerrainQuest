@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Excolo/TerrainQuest.svg?branch=master)](https://travis-ci.org/Excolo/TerrainQuest)
+
 TerrainQuest
 =====
 A simple C# based terrain generation / rendering tool
