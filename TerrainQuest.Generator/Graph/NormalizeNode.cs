@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using TerrainQuest.Generator.Helpers;
 
-namespace TerrainQuest.Generator.Graph.Effect
+namespace TerrainQuest.Generator.Graph
 {
     /// <summary>
     /// A node that takes a source node <see cref="HeightMap"/> 

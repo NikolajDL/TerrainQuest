@@ -9,8 +9,6 @@ using TerrainQuest.Generator.Generators;
 using TerrainQuest.Generator.Generators.Noise;
 using TerrainQuest.Generator.Generators.Shape;
 using TerrainQuest.Generator.Graph;
-using TerrainQuest.Generator.Graph.Blending;
-using TerrainQuest.Generator.Graph.Effect;
 
 namespace TerrainQuest.ConsoleApplication
 {

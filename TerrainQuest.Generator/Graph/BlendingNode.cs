@@ -7,7 +7,7 @@ using TerrainQuest.Generator.Blending;
 using TerrainQuest.Generator.Helpers;
 using TerrainQuest.Generator.Serialization;
 
-namespace TerrainQuest.Generator.Graph.Blending
+namespace TerrainQuest.Generator.Graph
 {
     /// <summary>
     /// A node that blends the the <see cref="HeightMap"/>s of each dependency, 

@@ -79,9 +79,9 @@
     <Compile Include="Generators\Noise\WhiteNoiseGenerator.cs" />
     <Compile Include="Generators\Shape\PyramidGenerator.cs" />
     <Compile Include="Generators\Shape\SquareGenerator.cs" />
-    <Compile Include="Graph\Blending\BlendingNode.cs" />
-    <Compile Include="Graph\Effect\ImageEffectNode.cs" />
-    <Compile Include="Graph\Effect\NormalizeNode.cs" />
+    <Compile Include="Graph\BlendingNode.cs" />
+    <Compile Include="Graph\ImageEffectNode.cs" />
+    <Compile Include="Graph\NormalizeNode.cs" />
     <Compile Include="Graph\GeneratorNode.cs" />
     <Compile Include="Graph\HeightMapNode.cs" />
     <Compile Include="Graph\INode.cs" />
