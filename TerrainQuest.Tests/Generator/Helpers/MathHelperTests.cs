@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TerrainQuest.Generator.Helpers;
 using Xunit;
 
@@ -121,6 +117,38 @@ namespace TerrainQuest.Tests.Generator.Helpers
 
             // Act
             var actual = MathHelper.NextPowerOfTwo(previous);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(0, 0)]
+        [InlineData(-2, -1)]
+        [InlineData(2, 1)]
+        [InlineData(-1, -0.5d)]
+        [InlineData(1, 0.5d)]
+        [InlineData(-4, -2)]
+        [InlineData(4, 2)]
+        public void Normalize_ToWithinSpecifiedRange(double value, double expected)
+        {
+            // Act
+            var actual = MathHelper.Normalize(value, -2, 2, -1, 1);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData(-2, -0.5)]
+        [InlineData(-1, 0)]
+        [InlineData(0, 0.5)]
+        [InlineData(1, 1)]
+        [InlineData(2, 1.5)]
+        public void Normalize_ToWithinZeroAndOne(double value, double expected)
+        {
+            // Act
+            var actual = MathHelper.Normalize(value, -1, 1);
 
             // Assert
             Assert.Equal(expected, actual);

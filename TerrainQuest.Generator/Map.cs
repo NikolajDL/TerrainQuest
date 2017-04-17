@@ -57,7 +57,8 @@ namespace TerrainQuest.Generator
             Height = height;
             Width = width;
 
-            _data = MathHelper.Copy(source, height, width);
+            if(source != null)
+                _data = MathHelper.Copy(source, height, width);
         }
 
         /// <summary>
@@ -65,6 +66,8 @@ namespace TerrainQuest.Generator
         /// </summary>
         public Map(TData[,] source)
         {
+            Check.NotNull(source, nameof(source));
+
             Height = source.GetLength(0);
             Width = source.GetLength(1);
 

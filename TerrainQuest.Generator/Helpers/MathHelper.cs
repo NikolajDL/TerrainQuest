@@ -55,6 +55,26 @@ namespace TerrainQuest.Generator.Helpers
         }
 
         /// <summary>
+        /// Normalize a value from within a given interval [min, max]
+        /// to stay within the interval [a, b].
+        /// The [a, b] interval defaults to [0, 1]
+        /// </summary>
+        public static double Normalize(double value, double min, double max, 
+            double a, double b)
+        {
+            return (((b - a) * (value - min)) / (max - min)) + a;
+        }
+
+        /// <summary>
+        /// Normalize a value from within a given interval [min, max]
+        /// to stay within the interval [0, 1].
+        /// </summary>
+        public static double Normalize(double value, double min, double max)
+        {
+            return ((value - min) / (max - min));
+        }
+
+        /// <summary>
         /// Copy a multidimensional array to an array of different height and width
         /// </summary>
         public static T[,] Copy<T>(T[,] original, int newHeight, int newWidth)

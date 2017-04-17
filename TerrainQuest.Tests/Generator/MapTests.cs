@@ -83,6 +83,16 @@ namespace TerrainQuest.Tests.Generator
         }
 
         [Fact]
+        public void Constructor_SourceOnlyNullThrowsArgumentNullException()
+        {
+            // Assert
+            Assert.Throws<ArgumentNullException>(() => {
+                // Act
+                var map = new Map<int>(null);
+            });
+        }
+
+        [Fact]
         public void GetValue_ReturnsCorrectValueWithinRange()
         {
             // Arrange

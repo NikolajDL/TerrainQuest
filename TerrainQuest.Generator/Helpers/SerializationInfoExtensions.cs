@@ -9,13 +9,20 @@ namespace TerrainQuest.Generator.Helpers
     public static class SerializationInfoExtensions
     {
         /// <summary>
+        /// The postfix added to the value-name for the type information of typed values.
+        /// </summary>
+        public const string TypedValuePostfix = "__Type";
+
+        /// <summary>
         /// Add a value for serialization that also includes the type of the value, 
         /// in order to correctly deserialize the actual runtime type. 
         /// </summary>
         public static void AddTypedValue(this SerializationInfo info, string name, object value)
         {
+            Check.NotEmpty(name, nameof(name));
+
             info.AddValue(name, value, value.GetType());
-            info.AddValue(name + "__Type", value.GetType(), typeof(Type));
+            info.AddValue(name + TypedValuePostfix, value.GetType(), typeof(Type));
         }
 
         /// <summary>
@@ -24,7 +31,9 @@ namespace TerrainQuest.Generator.Helpers
         /// </summary>
         public static T GetTypedValue<T>(this SerializationInfo info, string name)
         {
-            var type = (Type)info.GetValue(name + "__Type", typeof(Type));
+            Check.NotEmpty(name, nameof(name));
+
+            var type = (Type)info.GetValue(name + TypedValuePostfix, typeof(Type));
             return (T)info.GetValue(name, type);
         }
 

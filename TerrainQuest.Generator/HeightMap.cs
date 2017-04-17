@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator
@@ -12,12 +13,12 @@ namespace TerrainQuest.Generator
         /// <summary>
         /// Get the largest height value in the heightmap
         /// </summary>
-        public double MaxHeight { get; private set; } = double.MinValue;
+        public double MaxHeight { get; private set; } = default(double);
 
         /// <summary>
         /// Get the lowest height value in the heightmap
         /// </summary>
-        public double MinHeight { get; private set; } = double.MaxValue;
+        public double MinHeight { get; private set; } = default(double);
 
         #region Constructors
 
@@ -37,16 +38,15 @@ namespace TerrainQuest.Generator
         /// Create a heightmap of the given dimensions
         /// </summary>
         public HeightMap(Size size)
-            : base(size.Height, size.Width) { }
+            : base(size.Height, size.Width) {
+        }
 
         /// <summary>
         /// Create a copy of the passed heightmap
         /// </summary>
         public HeightMap(double[,] map)
-            : base(map.GetLength(0), map.GetLength(1))
+            : base(map)
         {
-            _data = (double[,])map.Clone();
-
             RecalculateMinMaxValue();
         }
 
@@ -115,12 +115,11 @@ namespace TerrainQuest.Generator
         }
 
         /// <summary>
-        /// Flatten the height of the heightmap to a given value between 0 and 1
+        /// Flatten the height of the heightmap to a given height
         /// </summary>
         /// <param name="height"></param>
         public void FlattenTo(double height)
         {
-            height = MathHelper.Clamp(height, 0d, 1d);
             this.ForEach((r, c) => Data[r, c] = height);
         }
 
@@ -139,10 +138,9 @@ namespace TerrainQuest.Generator
         /// </summary>
         public void Normalize(double min, double max)
         {
-            var normalizationRatio = (max - min);
             this.ForEach((r, c) =>
             {
-                Data[r, c] = (Data[r, c] - min) / normalizationRatio;
+                Data[r, c] = MathHelper.Normalize(Data[r, c], min, max);
             });
             RecalculateMinMaxValue();
         }
@@ -183,7 +181,7 @@ namespace TerrainQuest.Generator
         public Color GetColor(int row, int col)
         {
             var height = Data[row, col];
-            var color = MathHelper.Clamp((int)(height * 255), 0, 255);
+            var color = MathHelper.Clamp((int)Math.Round(height * 255), 0, 255);
             return Color.FromArgb(color, color, color);
         }
 
