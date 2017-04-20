@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using TerrainQuest.Generator;
 using TerrainQuest.Generator.Effects;
 using TerrainQuest.Generator.Graph;
+using TerrainQuest.Generator.Helpers;
 using Xunit;
 
 namespace TerrainQuest.Tests.Generator.Graph
@@ -151,6 +152,47 @@ namespace TerrainQuest.Tests.Generator.Graph
             // Assert
             mockEffectA.Verify(m => m.Calculate(It.IsAny<HeightMap>()), Times.Once);
             mockEffectB.Verify(m => m.Calculate(It.IsAny<HeightMap>()), Times.Once);
+        }
+
+        // Test that the effects are actually applied to heightmap
+        [Fact]
+        public void Execute_AllEffectsAreAppliedToHeightMap()
+        {
+            // Arrange
+            var data = new double[,] { { 0d, 0.25d, 0.5d, 0.75d, 1d } };
+            var sourceMock = new Mock<HeightMapNode>();
+            sourceMock.SetupGet(h => h.Result)
+                .Returns(new HeightMap(data));
+            var expected = MockImageEffect(MockImageEffect(MockImageEffect(
+                sourceMock.Object.Result))).Data;
+
+            var mockEffectA = new Mock<IEffect>();
+            mockEffectA.Setup(m => m.Calculate(It.IsAny<HeightMap>()))
+                .Returns<HeightMap>(MockImageEffect);
+            var node = new ImageEffectNode(sourceMock.Object,
+                mockEffectA.Object, mockEffectA.Object, mockEffectA.Object);
+
+            // Act
+            node.Execute();
+            var actual = node.Result.Data;
+
+            // Assert
+            Assert.Equal(expected[0, 0], actual[0, 0]);
+            Assert.Equal(expected[0, 1], actual[0, 1]);
+            Assert.Equal(expected[0, 2], actual[0, 2]);
+            Assert.Equal(expected[0, 3], actual[0, 3]);
+            Assert.Equal(expected[0, 4], actual[0, 4]);
+        }
+
+        private HeightMap MockImageEffect(HeightMap h)
+        {
+            var result = h.Clone();
+
+            h.ForEach((r, c) => {
+                result[r, c] += 0.1d; 
+            });
+
+            return result;
         }
 
         private static SerializationInfo MockSerializationInfo<T>()

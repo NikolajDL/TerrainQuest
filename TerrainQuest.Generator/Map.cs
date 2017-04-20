@@ -58,7 +58,7 @@ namespace TerrainQuest.Generator
             Width = width;
 
             if(source != null)
-                _data = MathHelper.Copy(source, height, width);
+                _data = MathHelper.Copy(source, Height, Width);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace TerrainQuest.Generator
             Height = source.GetLength(0);
             Width = source.GetLength(1);
 
-            _data = source;
+            _data = MathHelper.Copy(source, Height, Width);
         }
 
         #endregion

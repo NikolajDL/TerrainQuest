@@ -22,7 +22,7 @@ namespace TerrainQuest.Generator.Effects
         /// </summary>
         public GammaEffect(double gamma)
         {
-            if (gamma > 0d)
+            if (gamma <= 0d)
                 throw new ArgumentOutOfRangeException("Gamma must be a value above zero");
 
             Gamma = gamma;
@@ -52,7 +52,7 @@ namespace TerrainQuest.Generator.Effects
         public GammaEffect(SerializationInfo info, StreamingContext context)
         {
             Gamma = info.GetDouble(nameof(Gamma));
-            if (Gamma > 0d)
+            if (Gamma <= 0d)
                 throw new ArgumentOutOfRangeException("Gamma must be a value above zero");
         }
 

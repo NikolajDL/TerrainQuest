@@ -8,6 +8,6 @@
         /// <summary>
         /// Get or set the <see cref="HeightMap"/> result of the node processing
         /// </summary>
-        public HeightMap Result { get; protected set; }
+        public virtual HeightMap Result { get; protected set; }
     }
 }

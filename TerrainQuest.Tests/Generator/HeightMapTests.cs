@@ -122,7 +122,7 @@ namespace TerrainQuest.Tests.Generator
             clone.SetValue(1, 1, 99d);
 
             // Assert
-            Assert.Equal(map.Data[1, 1], clone.Data[1, 1]);
+            Assert.NotEqual(map.Data[1, 1], clone.Data[1, 1]);
             Assert.Equal(99d, clone.Data[1, 1]);
         }
 
