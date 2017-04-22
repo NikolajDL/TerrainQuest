@@ -1,6 +1,5 @@
 ﻿using Moq;
 using Moq.Protected;
-using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using TerrainQuest.Generator.Graph;

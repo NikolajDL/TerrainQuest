@@ -73,11 +73,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generator\Blending\AddBlendTests.cs" />
+    <Compile Include="Generator\Blending\DarkenBlendTests.cs" />
+    <Compile Include="Generator\Blending\DifferenceBlendTests.cs" />
+    <Compile Include="Generator\Blending\LightenBlendTests.cs" />
+    <Compile Include="Generator\Blending\MaskBlendTests.cs" />
+    <Compile Include="Generator\Blending\MultiplyBlendTests.cs" />
+    <Compile Include="Generator\Blending\OverlayBlendTests.cs" />
+    <Compile Include="Generator\Blending\ScreenBlendTests.cs" />
+    <Compile Include="Generator\Blending\SubtractBlendTests.cs" />
     <Compile Include="Generator\Effects\BrightnessEffectTests.cs" />
     <Compile Include="Generator\Effects\ContrastEffectTests.cs" />
     <Compile Include="Generator\Effects\GammaEffectTests.cs" />
     <Compile Include="Generator\Effects\IntensityEffectTests.cs" />
     <Compile Include="Generator\Effects\InvertEffectTests.cs" />
+    <Compile Include="Generator\Graph\BlendingNodeTests.cs" />
     <Compile Include="Generator\Graph\ImageEffectNodeTests.cs" />
     <Compile Include="Generator\Graph\ParallelNodeTests.cs" />
     <Compile Include="Generator\HeightMapTests.cs" />

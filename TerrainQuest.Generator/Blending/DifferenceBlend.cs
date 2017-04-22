@@ -1,5 +1,4 @@
-﻿using System;
-using TerrainQuest.Generator.Helpers;
+﻿using TerrainQuest.Generator.Helpers;
 
 namespace TerrainQuest.Generator.Blending
 {

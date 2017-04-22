@@ -16,7 +16,6 @@ namespace TerrainQuest.Generator.Graph
     /// </summary>
     public class BlendingNode : HeightMapNode
     {
-        private Size? _size;
 
         private List<SerializedNode> _dependencies = new List<SerializedNode>();
 
@@ -24,6 +23,11 @@ namespace TerrainQuest.Generator.Graph
         /// Get the blendmode being performed by this blendnode
         /// </summary>
         public IBlendMode BlendMode { get; private set; }
+
+        /// <summary>
+        /// Get the dimensions of the resulting heightmap
+        /// </summary>
+        public Size? Dimensions { get; private set; }
 
         /// <summary>
         /// Get all nodes getting blended.
@@ -42,6 +46,8 @@ namespace TerrainQuest.Generator.Graph
         /// </summary>
         public BlendingNode(IBlendMode blendMode)
         {
+            Check.NotNull(blendMode, nameof(blendMode));
+
             BlendMode = blendMode;
         }
 
@@ -50,7 +56,9 @@ namespace TerrainQuest.Generator.Graph
         /// </summary>
         public BlendingNode(int height, int width, IBlendMode blendMode)
         {
-            _size = new Size(width, height);
+            Check.NotNull(blendMode, nameof(blendMode));
+
+            Dimensions = new Size(width, height);
             BlendMode = blendMode;
         }
 
@@ -60,6 +68,8 @@ namespace TerrainQuest.Generator.Graph
         /// </summary>
         public void AddDependency(HeightMapNode dependency)
         {
+            Check.NotNull(dependency, nameof(dependency));
+
             lock (_dependencies)
             {
                 _dependencies.Add(new SerializedNode(dependency));
@@ -76,8 +86,8 @@ namespace TerrainQuest.Generator.Graph
                 var sources = Dependencies.Cast<HeightMapNode>();
                 var result = sources.First().Result;
 
-                if (_size.HasValue)
-                    result = new HeightMap(_size.Value.Height, _size.Value.Width, result.Data);
+                if (Dimensions.HasValue)
+                    result = new HeightMap(Dimensions.Value.Height, Dimensions.Value.Width, result.Data);
 
                 foreach(var source in sources.Skip(1))
                 {
@@ -95,7 +105,7 @@ namespace TerrainQuest.Generator.Graph
         /// </summary>
         public BlendingNode(SerializationInfo info, StreamingContext context)
         {
-            _size = (Size?)info.GetValue("Size", typeof(Size?));
+            Dimensions = (Size?)info.GetValue("Dimensions", typeof(Size?));
             _dependencies = (List<SerializedNode>)info.GetValue(nameof(Dependencies), typeof(List<SerializedNode>));
             BlendMode = info.GetTypedValue<IBlendMode>(nameof(BlendMode));
         }
@@ -105,7 +115,7 @@ namespace TerrainQuest.Generator.Graph
         /// </summary>
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Size", _size, typeof(Size?));
+            info.AddValue("Dimensions", Dimensions, typeof(Size?));
             info.AddValue(nameof(Dependencies), _dependencies, _dependencies.GetType());
             info.AddTypedValue(nameof(BlendMode), BlendMode);
         }
