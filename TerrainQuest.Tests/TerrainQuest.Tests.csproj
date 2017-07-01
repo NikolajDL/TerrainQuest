@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generator\Blending\AddBlendTests.cs" />
+    <Compile Include="Generator\Blending\BlendModesTests.cs" />
     <Compile Include="Generator\Blending\DarkenBlendTests.cs" />
     <Compile Include="Generator\Blending\DifferenceBlendTests.cs" />
     <Compile Include="Generator\Blending\LightenBlendTests.cs" />

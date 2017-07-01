@@ -9,6 +9,11 @@ namespace TerrainQuest.Generator.Effects
     public class InvertEffect : IEffect
     {
         /// <summary>
+        /// Create an invert effect
+        /// </summary>
+        public InvertEffect() { }
+
+        /// <summary>
         /// Invert given heightmap
         /// </summary>
         public HeightMap Calculate(HeightMap heightMap)
@@ -23,7 +28,20 @@ namespace TerrainQuest.Generator.Effects
             return inverted;
         }
 
+        #region Serialization
+
+        /// <summary>
+        /// Object deserialization constructor
+        /// </summary>
+        public InvertEffect(SerializationInfo info, StreamingContext context)
+        { }
+
+        /// <summary>
+        /// Object serialization method
+        /// </summary>
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         { }
+
+        #endregion
     }
 }

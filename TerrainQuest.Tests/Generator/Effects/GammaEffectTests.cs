@@ -55,6 +55,19 @@ namespace TerrainQuest.Tests.Generator.Effects
             Assert.Equal(expected.Gamma, actual.Gamma);
         }
 
+        [Fact]
+        public void ISerializable_DeserializeNegativeGammaThrowsException()
+        {
+            // Arrange
+            var info = MockSerializationInfo<GammaEffect>();
+            info.AddValue("Gamma", -1d);
+
+            // Act
+            Assert.Throws<ArgumentOutOfRangeException>(() => {
+                var actual = new GammaEffect(info, new StreamingContext());
+            });
+        }
+
         [Theory]
         [InlineData(0.1d)]
         [InlineData(0.5d)]

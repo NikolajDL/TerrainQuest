@@ -30,6 +30,21 @@ namespace TerrainQuest.Tests.Generator.Effects
             Assert.Equal(expected[0, 4], actual[0, 4]);
         }
 
+        [Fact]
+        public void ISerializable_SerializeAndDeserializeCorrectly()
+        {
+            // Arrange
+            var expected = new InvertEffect();
+            var info = MockSerializationInfo<InvertEffect>();
+
+            // Act
+            expected.GetObjectData(info, new StreamingContext());
+            var actual = new InvertEffect(info, new StreamingContext());
+
+            // Assert
+            Assert.NotNull(actual);
+        }
+
         private double[,] MockImageEffect(HeightMap h)
         {
             var result = h.Clone();
