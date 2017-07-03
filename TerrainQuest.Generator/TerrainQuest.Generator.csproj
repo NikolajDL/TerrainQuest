@@ -63,6 +63,7 @@
     <Compile Include="Blending\OverlayBlend.cs" />
     <Compile Include="Blending\ScreenBlend.cs" />
     <Compile Include="Blending\SubtractBlend.cs" />
+    <Compile Include="Effects\GaussianBlurEffect.cs" />
     <Compile Include="Effects\BrightnessEffect.cs" />
     <Compile Include="Effects\ContrastEffect.cs" />
     <Compile Include="Effects\GammaEffect.cs" />
@@ -97,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Processors\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

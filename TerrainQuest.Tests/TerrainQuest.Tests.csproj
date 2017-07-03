@@ -88,6 +88,7 @@
     <Compile Include="Generator\Effects\BrightnessEffectTests.cs" />
     <Compile Include="Generator\Effects\ContrastEffectTests.cs" />
     <Compile Include="Generator\Effects\GammaEffectTests.cs" />
+    <Compile Include="Generator\Effects\GaussianBlurEffectTests.cs" />
     <Compile Include="Generator\Effects\IntensityEffectTests.cs" />
     <Compile Include="Generator\Effects\InvertEffectTests.cs" />
     <Compile Include="Generator\Graph\BlendingNodeTests.cs" />
